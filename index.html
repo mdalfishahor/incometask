@@ -3,49 +3,50 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>💰 Income Hustle</title>
+    <title>💰 Income Tasks</title>
 
-    <!-- Google Fonts (Nunito + Fredoka for playful vibe) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <!-- Cartoon Brutalist UI Styles -->
+    <!-- Professional Modern UI Styles -->
     <style>
         /* ------- Variables & Base ------- */
         :root {
-            --font-display: 'Nunito', 'Fredoka', system-ui, sans-serif;
-            --font-body: 'Fredoka', system-ui, sans-serif;
-            --orange: #FF8C42;
-            --orange-dark: #FF6B00;
-            --amber: #FFC857;
-            --amber-light: #FFE135;
-            --green: #00D97E;
-            --green-dark: #00B565;
-            --black: #0B1220;
-            --white: #FFFFFF;
-            --text: #0B1220;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --primary: #3B82F6;
+            --primary-dark: #1E40AF;
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --bg: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border: #E5E7EB;
+            --text: #1F2937;
             --text-light: #6B7280;
-            --outline: 4px solid #0B1220;
-            --shadow: 8px 8px 0px #0B1220;
-            --shadow-sm: 4px 4px 0px #0B1220;
-            --radius: 8px;
-            --nav-height: 80px;
+            --text-muted: #9CA3AF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --nav-height: 70px;
         }
 
         body.dark-theme {
-            --text: #FFFFFF;
-            --text-light: #E0E0E0;
-            --orange: #FF9F5A;
-            --amber: #FFD966;
-            --green: #00E991;
-            --black: #FFFFFF;
-            --white: #1A1A1A;
-            --shadow: 8px 8px 0px rgba(255,255,255,0.2);
-            --shadow-sm: 4px 4px 0px rgba(255,255,255,0.15);
+            --bg: #111827;
+            --bg-card: #1F2937;
+            --border: #374151;
+            --text: #F3F4F6;
+            --text-light: #D1D5DB;
+            --text-muted: #9CA3AF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -59,168 +60,109 @@
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-family);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             color: var(--text);
-            background: linear-gradient(135deg, #FFE5CC 0%, #FFFACD 50%, #E0FFE0 100%);
+            background: var(--bg);
             transition: background 0.3s ease, color 0.3s ease;
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
         }
 
-        body.dark-theme {
-            background: linear-gradient(135deg, #2A1810 0%, #1A1A1A 50%, #0F2010 100%);
-        }
-
         /* App container */
         #app {
-            max-width: 500px;
-            margin: 16px auto 100px;
+            max-width: 480px;
+            margin: 0 auto;
             position: relative;
-            min-height: calc(100vh - 140px);
-            padding: 0 8px;
+            min-height: 100vh;
+            padding: 16px;
+            padding-bottom: 100px;
+            background: var(--bg);
         }
 
-        /* Animated background shapes */
-        .bg-shapes {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border: var(--outline);
-            opacity: 0.15;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape.s1 {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
-            background: var(--orange);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .shape.s2 {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--green);
-            top: 40%;
-            right: 8%;
-            animation-delay: 1s;
-        }
-
-        .shape.s3 {
-            width: 180px;
-            height: 100px;
-            border-radius: 50px;
-            background: var(--amber);
-            bottom: 15%;
-            left: 10%;
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        /* Header with solid colors */
+        /* Header with professional card */
         .profile-header {
             position: relative;
             z-index: 5;
             padding: 20px;
-            border: var(--outline);
             border-radius: var(--radius);
-            background: var(--amber);
-            box-shadow: var(--shadow);
-            margin-bottom: 16px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
-        .profile-header.dark {
-            background: var(--orange);
-        }
-
         #user-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: var(--radius);
+            width: 72px;
+            height: 72px;
+            border-radius: 12px;
             object-fit: cover;
-            border: var(--outline);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
         }
 
         .user-info h1 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 900;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .user-info p {
-            font-weight: 700;
-            margin-top: 4px;
-            color: var(--text);
-            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         .balance-badge {
             margin-left: auto;
-            background: var(--orange);
-            border: var(--outline);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border-radius: var(--radius);
             padding: 12px 16px;
-            font-weight: 900;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-sm);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: white;
             text-align: center;
-            min-width: 100px;
+            min-width: 90px;
+            box-shadow: var(--shadow-sm);
         }
 
         .balance-badge .label {
             font-size: 0.7rem;
             display: block;
-            opacity: 0.8;
+            opacity: 0.85;
+            font-weight: 500;
         }
 
         .balance-badge .amount {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             display: block;
+            font-weight: 700;
         }
 
         /* Main content */
         main {
             position: relative;
             z-index: 2;
-            padding: 6px;
             min-height: calc(100vh - 200px);
         }
 
         h2 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin: 12px 0 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 24px 0 8px;
         }
 
         .desc-muted {
             color: var(--text-light);
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 16px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* Pages */
@@ -240,68 +182,69 @@
 
         /* ====== HOME PAGE ====== */
         .streak-widget {
-            background: var(--green);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 20px;
             margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            box-shadow: var(--shadow-sm);
         }
 
         .streak-widget h3 {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 900;
+            font-size: 1rem;
+            font-weight: 700;
             margin-bottom: 12px;
         }
 
         .streak-calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 12px;
         }
 
         .streak-day {
             width: 100%;
             aspect-ratio: 1;
-            border: 3px solid var(--text);
-            border-radius: 4px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 0.8rem;
-            background: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 0.75rem;
+            background: var(--bg);
             transition: all 0.2s;
         }
 
         .streak-day.completed {
-            background: var(--orange);
-            border-color: var(--orange-dark);
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+            font-weight: 700;
         }
 
         .streak-day.today {
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-            transform: scale(1.1);
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            font-weight: 700;
         }
 
         .streak-counter {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 900;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 8px;
         }
 
         .xp-widget {
-            background: var(--orange);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 20px;
             margin-bottom: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
         }
 
         .xp-header {
@@ -309,56 +252,51 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
-            font-weight: 900;
+            font-weight: 600;
         }
 
         .level-badge {
-            background: var(--white);
-            border: var(--outline);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
+            color: white;
             box-shadow: var(--shadow-sm);
         }
 
         .level-badge .num {
-            font-size: 1.5rem;
-            font-weight: 900;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .level-badge .label {
             font-size: 0.6rem;
-            font-weight: 700;
+            font-weight: 500;
         }
 
         .xp-bar {
-            background: rgba(255, 255, 255, 0.5);
-            border: 3px solid var(--text);
-            border-radius: 4px;
-            height: 24px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            height: 20px;
             overflow: hidden;
             margin-bottom: 8px;
         }
 
         .xp-fill {
-            background: var(--green);
+            background: linear-gradient(90deg, var(--success) 0%, var(--primary) 100%);
             height: 100%;
             transition: width 0.4s ease;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
         }
 
         .xp-text {
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
         }
 
         /* Stats grid */
@@ -370,13 +308,13 @@
         }
 
         .stat-card {
-            background: var(--white);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             text-align: center;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
         .stat-card:active {
@@ -384,53 +322,51 @@
         }
 
         .stat-card h3 {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .stat-card p {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--orange);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
         /* Referral section */
         .referral-section {
-            background: var(--amber);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             text-align: center;
             margin-bottom: 16px;
         }
 
         .referral-section h3 {
-            font-family: var(--font-display);
-            font-weight: 900;
+            font-weight: 700;
             margin-bottom: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .referral-section p {
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 12px;
-            color: var(--text);
+            color: var(--text-light);
         }
 
         #referral-link {
             width: 100%;
-            padding: 12px;
-            border: 3px dashed var(--text);
-            border-radius: var(--radius);
-            background: rgba(255, 255, 255, 0.7);
-            font-weight: 700;
-            font-size: 0.85rem;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            font-weight: 600;
+            font-size: 0.8rem;
             text-align: center;
             margin-bottom: 12px;
             font-family: monospace;
@@ -438,49 +374,45 @@
 
         /* ====== TASKS PAGE ====== */
         .task-container {
-            background: var(--white);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
             margin-bottom: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
         }
 
-        .task-header {
-            display: flex;
+        .task-row {
+            display: grid;
+            grid-template-columns: 60px 1fr;
             gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 12px;
+            align-items: center;
         }
 
         .task-icon {
             width: 60px;
             height: 60px;
-            border-radius: var(--radius);
-            border: 3px solid var(--text);
+            border-radius: 10px;
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            background: var(--amber);
-            flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
         }
 
-        .task-info h3 {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 900;
+        .task-container h3 {
+            font-size: 1rem;
+            font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .task-info p {
-            font-size: 0.9rem;
+        .task-container p {
+            font-size: 0.85rem;
             color: var(--text-light);
-            font-weight: 700;
+            font-weight: 500;
+            margin-bottom: 12px;
         }
-
-
 
         /* ====== PROFILE PAGE ====== */
         .profile-stats {
@@ -491,42 +423,40 @@
         }
 
         .profile-stat-card {
-            background: var(--white);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             text-align: center;
         }
 
         .profile-stat-card .label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .profile-stat-card .value {
-            font-family: var(--font-display);
             font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--green);
+            font-weight: 700;
+            color: var(--primary);
         }
 
         .achievements-section {
-            background: var(--white);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 16px;
         }
 
         .achievements-section h3 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 900;
+            font-size: 1rem;
+            font-weight: 700;
             margin-bottom: 12px;
         }
 
@@ -538,22 +468,21 @@
 
         .achievement-badge {
             aspect-ratio: 1;
-            border: 3px solid var(--text);
-            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--bg);
             cursor: pointer;
-            transition: transform 0.2s;
-            position: relative;
-            font-size: 1.8rem;
+            transition: all 0.2s;
+            font-size: 1.6rem;
         }
 
         .achievement-badge.unlocked {
-            background: var(--amber);
-            box-shadow: var(--shadow-sm);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+            border-color: var(--primary);
         }
 
         .achievement-badge:active {
@@ -561,26 +490,25 @@
         }
 
         .achievement-label {
-            font-size: 0.65rem;
-            font-weight: 700;
+            font-size: 0.6rem;
+            font-weight: 600;
             text-align: center;
             margin-top: 4px;
         }
 
         /* Transaction history */
         .transactions-section {
-            background: var(--white);
-            border: var(--outline);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 16px;
         }
 
         .transactions-section h3 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 900;
+            font-size: 1rem;
+            font-weight: 700;
             margin-bottom: 12px;
         }
 
@@ -588,9 +516,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            font-weight: 700;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-weight: 500;
         }
 
         .transaction-item:last-child {
@@ -604,78 +532,59 @@
         }
 
         .transaction-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .transaction-amount {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--green);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--success);
         }
 
         .transaction-amount.negative {
-            color: var(--orange);
+            color: var(--warning);
         }
 
         /* ====== BUTTONS ====== */
         .action-btn {
-            padding: 14px 16px;
-            border: var(--outline);
-            border-radius: var(--radius);
-            font-family: var(--font-body);
-            font-weight: 900;
-            font-size: 0.95rem;
+            padding: 12px 16px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
             width: 100%;
-            background: var(--green);
-            color: var(--text);
-            box-shadow: var(--shadow);
-            transition: all 0.15s;
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
             position: relative;
             overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .action-btn:active {
-            transform: translateY(4px);
-            box-shadow: 2px 2px 0px var(--text);
+            transform: translateY(1px);
+            box-shadow: var(--shadow-md);
         }
 
         .action-btn[disabled] {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
         }
 
         .action-btn.orange {
-            background: var(--orange);
-        }
-
-        .action-btn.amber {
-            background: var(--amber);
-            color: var(--text);
-        }
-
-        /* Spin button special */
-        #spin-wheel-btn {
-            background: var(--green);
-            padding: 16px;
-            font-size: 1.1rem;
-        }
-
-        #spin-wheel-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+            background: var(--warning);
         }
 
         /* Form styles */
@@ -689,26 +598,26 @@
 
         #withdraw-form label {
             display: block;
-            font-weight: 900;
+            font-weight: 600;
             margin-bottom: 6px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         #withdraw-form input,
         #withdraw-form select {
             width: 100%;
-            padding: 12px;
-            border: 3px solid var(--text);
-            border-radius: var(--radius);
-            background: var(--white);
-            font-family: var(--font-body);
-            font-weight: 700;
-            font-size: 0.95rem;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 0.9rem;
             color: var(--text);
         }
 
         #withdraw-form input::placeholder {
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         /* Bottom navigation */
@@ -718,16 +627,16 @@
             transform: translateX(-50%);
             bottom: 12px;
             z-index: 1000;
-            width: calc(100% - 16px);
-            max-width: 500px;
+            width: calc(100% - 32px);
+            max-width: 448px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 4px;
             padding: 8px;
             border-radius: var(--radius);
-            background: var(--white);
-            border: var(--outline);
-            box-shadow: var(--shadow);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
             height: var(--nav-height);
             align-items: center;
             justify-items: center;
@@ -740,24 +649,23 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            padding: 4px;
-            border-radius: var(--radius);
-            color: var(--text-light);
+            padding: 6px 8px;
+            border-radius: 10px;
+            color: var(--text-muted);
             cursor: pointer;
-            font-weight: 900;
-            font-size: 0.75rem;
-            transition: all 0.15s;
+            font-weight: 600;
+            font-size: 0.7rem;
+            transition: all 0.2s;
             width: 100%;
         }
 
         .nav-btn i {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
 
         .nav-btn.active {
-            background: var(--amber);
-            color: var(--text);
-            border: 2px solid var(--text);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+            color: var(--primary);
         }
 
         /* Modal */
@@ -768,7 +676,7 @@
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
         }
 
@@ -779,20 +687,20 @@
         .modal-content {
             padding: 24px;
             border-radius: var(--radius);
-            background: var(--white);
-            border: var(--outline);
-            box-shadow: var(--shadow);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
             text-align: center;
             color: var(--text);
             max-width: 90%;
         }
 
         .loader {
-            border: 5px solid var(--text-light);
+            border: 3px solid var(--bg);
             border-radius: 50%;
-            border-top: 5px solid var(--orange);
-            width: 50px;
-            height: 50px;
+            border-top: 3px solid var(--primary);
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
             margin: 0 auto 12px;
         }
@@ -816,36 +724,25 @@
             }
 
             .profile-header {
-                flex-wrap: wrap;
-                padding: 14px;
+                padding: 16px;
             }
 
             .balance-badge {
                 margin-left: 0;
                 width: 100%;
-                order: 3;
             }
 
             #app {
-                margin: 8px auto 110px;
+                padding: 12px;
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
-
-
         }
     </style>
 </head>
 <body>
-    <!-- Animated background shapes -->
-    <div class="bg-shapes" aria-hidden="true">
-        <div class="shape s1"></div>
-        <div class="shape s2"></div>
-        <div class="shape s3"></div>
-    </div>
-
     <div id="app">
         <!-- Header -->
         <header class="profile-header">
@@ -863,7 +760,7 @@
         <main id="main-content">
             <!-- HOME PAGE -->
             <div id="home-page" class="page active" aria-live="polite">
-                <h2>🎯 Dashboard</h2>
+                <h2>Dashboard</h2>
                 <p class="desc-muted">Your daily hustle stats</p>
 
                 <!-- Streak Widget -->
@@ -871,10 +768,10 @@
                     <h3>🔥 Daily Streak</h3>
                     <div class="streak-calendar" id="streak-calendar"></div>
                     <div class="streak-counter">
-                        <span id="streak-days">0</span> Day Streak 🎉
+                        <span id="streak-days">0</span> Day Streak
                     </div>
-                    <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 8px;">
-                        Unlock bonuses at 3️⃣, 5️⃣ & 7️⃣ days!
+                    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 8px;">
+                        Unlock bonuses at 3, 5 & 7 days!
                     </p>
                 </div>
 
@@ -888,9 +785,7 @@
                         </div>
                     </div>
                     <div class="xp-bar">
-                        <div class="xp-fill" id="xp-fill" style="width: 0%;">
-                            <span id="xp-text" style="display: none;"></span>
-                        </div>
+                        <div class="xp-fill" id="xp-fill" style="width: 0%;"></div>
                     </div>
                     <div class="xp-text" id="xp-display">0 / 100 XP</div>
                 </div>
@@ -898,11 +793,11 @@
                 <!-- Stats -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>📺 Ads Today</h3>
+                        <h3>Ads Today</h3>
                         <p><span id="daily-ads-watched">0</span> / 25</p>
                     </div>
                     <div class="stat-card">
-                        <h3>👥 Referrals</h3>
+                        <h3>Referrals</h3>
                         <p id="referral-count">0</p>
                     </div>
                 </div>
@@ -918,51 +813,46 @@
 
             <!-- TASKS PAGE -->
             <div id="tasks-page" class="page" aria-hidden="true">
-                <h2>✅ Complete Tasks</h2>
+                <h2>Complete Tasks</h2>
                 <p class="desc-muted">Earn taka fast!</p>
 
                 <div class="task-container">
-                    <div class="task-header">
+                    <div class="task-row">
                         <div class="task-icon">📺</div>
-                        <div class="task-info">
+                        <div>
                             <h3>Watch Ad</h3>
                             <p>+0.5 TK per video</p>
+                            <button id="watch-ad-btn" class="action-btn">▶️ Watch Now</button>
                         </div>
                     </div>
-                    <button id="watch-ad-btn" class="action-btn green">
-                        <span class="btn-text">▶️ Watch Now</span>
-                        <span class="btn-loader" style="display: none;"></span>
-                    </button>
                 </div>
 
                 <div class="task-container">
-                    <div class="task-header">
+                    <div class="task-row">
                         <div class="task-icon">📱</div>
-                        <div class="task-info">
+                        <div>
                             <h3>Join Channel</h3>
                             <p>+10 TK bonus</p>
+                            <button id="join-channel-btn" class="action-btn orange">Join Channel</button>
                         </div>
                     </div>
-                    <button id="join-channel-btn" class="action-btn orange">Join Channel</button>
                 </div>
 
                 <div class="task-container">
-                    <div class="task-header">
+                    <div class="task-row">
                         <div class="task-icon">👥</div>
-                        <div class="task-info">
+                        <div>
                             <h3>Join Group</h3>
                             <p>+2 TK bonus</p>
+                            <button id="join-group-btn" class="action-btn">Join Group</button>
                         </div>
                     </div>
-                    <button id="join-group-btn" class="action-btn amber">Join Group</button>
                 </div>
             </div>
 
-
-
             <!-- WITHDRAW PAGE -->
             <div id="withdraw-page" class="page" aria-hidden="true">
-                <h2>💸 Withdraw</h2>
+                <h2>Withdraw</h2>
                 <p class="desc-muted">Minimum 50 TK required</p>
 
                 <form id="withdraw-form">
@@ -985,34 +875,33 @@
                         <input type="number" id="amount" placeholder="e.g., 50" required min="1" />
                     </div>
 
-                    <button type="submit" id="withdraw-submit-btn" class="action-btn orange">
+                    <button type="submit" id="withdraw-submit-btn" class="action-btn">
                         <span class="btn-text">✨ Submit Request</span>
-                        <span class="btn-loader" style="display: none;"></span>
                     </button>
                 </form>
             </div>
 
             <!-- PROFILE PAGE -->
             <div id="profile-page" class="page" aria-hidden="true">
-                <h2>👤 Profile</h2>
+                <h2>Profile</h2>
                 <p class="desc-muted">Your achievements & stats</p>
 
                 <!-- Stats Cards -->
                 <div class="profile-stats">
                     <div class="profile-stat-card">
-                        <div class="label">📊 Total Earned</div>
+                        <div class="label">Total Earned</div>
                         <div class="value" id="lifetime-earned">0</div>
                     </div>
                     <div class="profile-stat-card">
-                        <div class="label">🎬 Ads Watched</div>
+                        <div class="label">Ads Watched</div>
                         <div class="value" id="lifetime-ads">0</div>
                     </div>
                     <div class="profile-stat-card">
-                        <div class="label">🔥 Best Streak</div>
+                        <div class="label">Best Streak</div>
                         <div class="value" id="best-streak">0</div>
                     </div>
                     <div class="profile-stat-card">
-                        <div class="label">⏰ Join Date</div>
+                        <div class="label">Join Date</div>
                         <div class="value" id="join-date" style="font-size: 0.9rem;">Today</div>
                     </div>
                 </div>
@@ -1064,7 +953,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src='//libtl.com/sdk.js' data-zone='11207299' data-sdk='show_11207299'></script>
 
-    <!-- Main Application Script -->
+    <!-- Main Application Script (Using your existing index.html script) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tg = window.Telegram && window.Telegram.WebApp;
@@ -1090,7 +979,8 @@
                 { id: 'streak_3', emoji: '🔥', name: '3-Day Streak', condition: (state) => state.bestStreak >= 3 },
                 { id: 'streak_7', emoji: '⭐', name: '7-Day Streak', condition: (state) => state.bestStreak >= 7 },
                 { id: 'level_5', emoji: '📈', name: 'Level 5', condition: (state) => state.level >= 5 },
-                { id: 'level_10', emoji: '🚀', name: 'Level 10', condition: (state) => state.level >= 10 }
+                { id: 'level_10', emoji: '🚀', name: 'Level 10', condition: (state) => state.level >= 10 },
+                { id: 'first_ref', emoji: '👥', name: 'First Referral', condition: (state) => state.referrals.length >= 1 }
             ];
 
             // --- DOM Elements ---
@@ -1111,7 +1001,6 @@
             const loadingModal = document.getElementById('loading-modal');
             const navButtons = document.querySelectorAll('.nav-btn');
             const pages = document.querySelectorAll('.page');
-
 
             // --- State Management ---
             let userState = {
@@ -1148,8 +1037,7 @@
                 try {
                     const savedState = localStorage.getItem(`userState_${userId}`);
                     if (savedState) {
-                        const parsed = JSON.parse(savedState);
-                        userState = Object.assign(userState, parsed);
+                        userState = Object.assign(userState, JSON.parse(savedState));
                     }
                 } catch (err) {
                     console.warn('Could not load state', err);
@@ -1171,8 +1059,7 @@
             const updateXPDisplay = () => {
                 const xpNeeded = userState.level * XP_PER_LEVEL;
                 const xpPercent = (userState.xp / xpNeeded) * 100;
-                const xpFill = document.getElementById('xp-fill');
-                xpFill.style.width = xpPercent + '%';
+                document.getElementById('xp-fill').style.width = xpPercent + '%';
                 document.getElementById('xp-display').textContent = `${userState.xp} / ${xpNeeded} XP`;
                 userLevelElem.textContent = userState.level;
                 displayLevelElem.textContent = userState.level;
@@ -1196,7 +1083,6 @@
                         userState.bestStreak = userState.currentStreak;
                     }
 
-                    // Check for streak bonuses
                     if (userState.currentStreak === 3 || userState.currentStreak === 5 || userState.currentStreak === 7) {
                         const bonus = userState.currentStreak === 3 ? 5 : userState.currentStreak === 5 ? 10 : 15;
                         userState.points = roundToHalf(userState.points + bonus);
@@ -1218,9 +1104,7 @@
                 for (let i = 1; i <= 7; i++) {
                     const day = document.createElement('div');
                     day.className = 'streak-day';
-                    if (i <= userState.currentStreak) {
-                        day.classList.add('completed');
-                    }
+                    if (i <= userState.currentStreak) day.classList.add('completed');
                     if (i === 7) day.classList.add('today');
                     day.textContent = i;
                     calendar.appendChild(day);
@@ -1251,8 +1135,6 @@
                 });
             };
 
-
-
             // --- Celebratory Functions ---
             const celebrateLevelUp = () => {
                 createConfetti();
@@ -1266,17 +1148,11 @@
                 tg.showAlert(`🏆 Achievement Unlocked: ${achievement.name}!`);
             };
 
-            const celebrateReward = (amount) => {
-                createConfetti();
-                try { tg.HapticFeedback.notificationOccurred('success'); } catch (e) { }
-                tg.showAlert(`🎊 You won ৳${amount}!`);
-            };
-
             const createConfetti = () => {
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
-                    confetti.innerHTML = ['🎉', '🎊', '✨', '⭐', '🌟'][Math.floor(Math.random() * 5)];
+                    confetti.innerHTML = ['🎉', '🎊', '✨', '⭐'][Math.floor(Math.random() * 4)];
                     confetti.style.left = Math.random() * window.innerWidth + 'px';
                     confetti.style.top = '-20px';
                     confetti.style.fontSize = (Math.random() * 20 + 20) + 'px';
@@ -1307,12 +1183,11 @@
                 tg.ready();
                 try { tg.expand(); } catch (e) { }
 
-                // Apply theme
                 document.body.classList.toggle('dark-theme', tg.colorScheme === 'dark');
 
                 const user = tg.initDataUnsafe && tg.initDataUnsafe.user;
                 if (!user || !user.id) {
-                    tg.showAlert("Could not verify user. Please open through Telegram.", () => tg.close());
+                    tg.showAlert("Could not verify user.", () => tg.close());
                     return;
                 }
 
@@ -1338,14 +1213,14 @@
                     userPhotoElem.src = user.photo_url || 'https://i.imgur.com/placeholder.png';
                     const fname = user.first_name ? user.first_name : '';
                     const lname = user.last_name ? user.last_name : '';
-                    userNameElem.innerHTML = `${escapeHtml(fname)} ${escapeHtml(lname)} 🚀`;
+                    userNameElem.innerHTML = `${escapeHtml(fname)} ${escapeHtml(lname)}`;
                 }
 
                 userPointsElem.textContent = formatPoints(userState.points);
                 userLevelElem.textContent = userState.level;
                 displayLevelElem.textContent = userState.level;
                 dailyAdsWatchedElem.textContent = userState.dailyAdWatchCount;
-                referralCountElem.textContent = (userState.referrals && userState.referrals.length) || 0;
+                referralCountElem.textContent = userState.referrals.length || 0;
 
                 referralLinkElem.value = `https://t.me/${BOT_USERNAME}?start=ref_${userState.userId}`;
 
@@ -1354,20 +1229,17 @@
                 checkAchievements();
                 renderAchievements();
 
-                // Update task button states
                 joinChannelBtn.disabled = userState.hasJoinedChannel;
                 joinChannelBtn.textContent = userState.hasJoinedChannel ? '✅ Bonus Claimed' : '📱 Join Channel';
 
                 joinGroupBtn.disabled = userState.hasJoinedGroup;
                 joinGroupBtn.textContent = userState.hasJoinedGroup ? '✅ Bonus Claimed' : '👥 Join Group';
 
-                // Profile stats
                 document.getElementById('lifetime-earned').textContent = formatPoints(userState.totalEarned);
                 document.getElementById('lifetime-ads').textContent = userState.totalAdsWatched;
                 document.getElementById('best-streak').textContent = userState.bestStreak;
                 document.getElementById('join-date').textContent = new Date(userState.joinDate).toLocaleDateString();
 
-                // Recent transactions
                 updateTransactionList();
             };
 
@@ -1384,7 +1256,7 @@
                     item.className = 'transaction-item';
                     item.innerHTML = `
                         <div class="transaction-type">
-                            <div class="transaction-icon" style="background: ${tx.type === 'earning' ? 'var(--green)' : 'var(--orange)'}">${tx.emoji}</div>
+                            <div class="transaction-icon" style="background: ${tx.type === 'earning' ? 'var(--success)' : 'var(--warning)'}">${tx.emoji}</div>
                             <div>${tx.description}</div>
                         </div>
                         <div class="transaction-amount ${tx.type === 'earning' ? '' : 'negative'}">${tx.type === 'earning' ? '+' : '-'}৳${tx.amount}</div>
@@ -1394,13 +1266,7 @@
             };
 
             const addTransaction = (type, amount, description, emoji) => {
-                userState.transactions.push({
-                    type,
-                    amount,
-                    description,
-                    emoji,
-                    date: new Date().toISOString()
-                });
+                userState.transactions.push({ type, amount, description, emoji, date: new Date().toISOString() });
             };
 
             const setupEventListeners = () => {
@@ -1416,7 +1282,6 @@
                         pages.forEach(page => {
                             const isTarget = page.id === pageId;
                             page.classList.toggle('active', isTarget);
-                            page.setAttribute('aria-hidden', (!isTarget).toString());
                         });
                         navButtons.forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
@@ -1424,18 +1289,15 @@
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     });
                 });
-
-                referralLinkElem && referralLinkElem.addEventListener('focus', () => referralLinkElem.select());
             };
 
             const handleWatchAd = () => {
                 if (userState.dailyAdWatchCount >= DAILY_AD_LIMIT) {
-                    tg.showAlert("Daily ad limit reached! Come back tomorrow.");
+                    tg.showAlert("Daily ad limit reached!");
                     return;
                 }
 
                 loadingModal.classList.add('show');
-                loadingModal.setAttribute('aria-hidden', 'false');
 
                 if (typeof show_11207299 === 'function') {
                     show_11207299().then(() => {
@@ -1443,7 +1305,6 @@
                         userState.totalEarned = roundToHalf(userState.totalEarned + POINTS_PER_AD);
                         userState.dailyAdWatchCount++;
                         userState.totalAdsWatched++;
-                        userState.lastAdWatchDate = new Date().toISOString().slice(0, 10);
                         addXP(XP_PER_AD);
                         addTransaction('earning', POINTS_PER_AD, 'Watched Ad', '📺');
                         saveState();
@@ -1451,10 +1312,9 @@
                         try { tg.HapticFeedback.notificationOccurred('success'); } catch (e) { }
                         tg.showAlert(`✅ +${POINTS_PER_AD} TK earned!`);
                     }).catch(() => {
-                        tg.showAlert("Ad could not load. Try again later.");
+                        tg.showAlert("Ad could not load.");
                     }).finally(() => {
                         loadingModal.classList.remove('show');
-                        loadingModal.setAttribute('aria-hidden', 'true');
                     });
                 } else {
                     setTimeout(() => {
@@ -1523,14 +1383,13 @@
                 if (amount < MIN_WITHDRAW_POINTS) { tg.showAlert(`Minimum: ${MIN_WITHDRAW_POINTS} TK`); return; }
                 if (amount > userState.points) { tg.showAlert("Insufficient balance."); return; }
 
-                withdrawSubmitBtn.classList.add('loading');
                 withdrawSubmitBtn.disabled = true;
                 userState.points = roundToHalf(userState.points - amount);
                 saveState();
                 updateUI();
 
                 const user = tg.initDataUnsafe && tg.initDataUnsafe.user;
-                const message = `<b>💰 New Withdraw Request!</b>\n---\n<b>User:</b> ${escapeHtml(user && user.first_name ? user.first_name : '')} ${escapeHtml(user && user.last_name ? user.last_name : '')} (@${escapeHtml(user && user.username ? user.username : 'N/A')})\n<b>ID:</b> <code>${user && user.id ? user.id : 'N/A'}</code>\n---\n<b>Method:</b> ${escapeHtml(method)}\n<b>Account:</b> <code>${escapeHtml(accountNumber)}</code>\n<b>Amount:</b> ${amount} TK\n---\n<b>Date:</b> ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })}`;
+                const message = `<b>💰 New Withdraw Request!</b>\n---\n<b>User:</b> ${escapeHtml(user && user.first_name ? user.first_name : '')} (@${escapeHtml(user && user.username ? user.username : 'N/A')})\n<b>ID:</b> <code>${user && user.id ? user.id : 'N/A'}</code>\n---\n<b>Method:</b> ${escapeHtml(method)}\n<b>Account:</b> <code>${escapeHtml(accountNumber)}</code>\n<b>Amount:</b> ${amount} TK`;
 
                 try {
                     const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -1546,16 +1405,14 @@
                         tg.showAlert("Withdrawal submitted!");
                         withdrawForm.reset();
                     } else {
-                        throw new Error(result && result.description ? result.description : 'Unknown error');
+                        throw new Error('Error');
                     }
                 } catch (error) {
-                    try { tg.HapticFeedback.notificationOccurred('error'); } catch (e) { }
-                    tg.showAlert("Failed to submit. Points returned.");
+                    tg.showAlert("Failed. Points returned.");
                     userState.points = roundToHalf(userState.points + amount);
                     saveState();
                     updateUI();
                 } finally {
-                    withdrawSubmitBtn.classList.remove('loading');
                     withdrawSubmitBtn.disabled = false;
                 }
             };
@@ -1571,18 +1428,16 @@
                     try { tg.HapticFeedback.notificationOccurred('success'); } catch (e) { }
                     tg.showAlert("Link copied!");
                 }).catch(() => {
-                    tg.showAlert('Could not copy. Try manual copy.');
+                    tg.showAlert('Could not copy.');
                 });
             };
 
             const setupNavigation = () => {
                 pages.forEach(page => {
-                    const isActive = page.classList.contains('active');
-                    page.setAttribute('aria-hidden', (!isActive).toString());
+                    page.setAttribute('aria-hidden', (!page.classList.contains('active')).toString());
                 });
             };
 
-            // --- Helpers ---
             function escapeHtml(unsafe) {
                 if (!unsafe) return '';
                 return String(unsafe).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
@@ -1597,7 +1452,6 @@
                 return Number.isInteger(n) ? n.toString() : n.toFixed(1);
             }
 
-            // Initialize
             initApp();
         });
     </script>
